@@ -1,0 +1,14 @@
+services:
+  app:
+    # Image du cours, déjà construite : docker compose pull
+    image: ghcr.io/corentinlaval/edm-base:latest
+    # Secours : reconstruire localement avec docker compose up --build
+    build: .
+    container_name: edm-app
+    ports:
+      - "8501:8501"
+    volumes:
+      # Le code et les données restent sur votre machine : on les modifie dans VS Code,
+      # l'appli se met à jour toute seule, rien n'est perdu si le conteneur est supprimé.
+      - ./app:/app/app
+      - ./data:/app/data

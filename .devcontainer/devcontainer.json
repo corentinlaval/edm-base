@@ -1,0 +1,20 @@
+{
+  "name": "EDM - Explorateur multimodal",
+  "build": {
+    "dockerfile": "../Dockerfile",
+    "context": ".."
+  },
+  "forwardPorts": [8501],
+  "portsAttributes": {
+    "8501": {
+      "label": "Explorateur multimodal",
+      "onAutoForward": "openBrowser"
+    }
+  },
+  "postAttachCommand": "streamlit run app/Accueil.py --server.port=8501 --server.address=0.0.0.0 --server.runOnSave=true --server.fileWatcherType=poll --server.enableCORS=false --server.enableXsrfProtection=false --browser.gatherUsageStats=false",
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-python.python"]
+    }
+  }
+}
